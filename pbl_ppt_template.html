@@ -131,13 +131,13 @@
             <i class="fas fa-microchip text-purple-500 text-3xl mb-4"></i>
             <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Model</h3>
             <p class="text-sm text-slate-500">
-                MobileNetV1-based CNN trained for multi-class crop disease classification with confidence scoring.
+                MobileNet-based CNN trained for multi-class crop disease classification with confidence scoring.
             </p>
         </div>
         <div class="glass p-8 rounded-3xl text-center border-2 border-green-500/20 bg-green-500/5">
             <i class="fab fa-github text-green-500 text-3xl mb-4"></i>
             <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-green-400">Source Code</h3>
-            <a href="https://github.com/vrishaan-taneja-2025/Cropcare_project" target="_blank"
+            <a href="https://github.com/your-username/CropCare" target="_blank"
                class="px-6 py-2 bg-green-600 rounded-full text-[10px] font-black hover:bg-green-500 transition">
                 VIEW GITHUB
             </a>
@@ -200,4 +200,26 @@ function startTimer() {
             timerContainer.classList.add('timer-warning');
             timerIcon.className='fas fa-hourglass-half';
         }
-        if(sec
+        if(sec>=600){
+            timerContainer.classList.add('timer-stop');
+            displayTime.innerText="10:00";
+            timerIcon.className='fas fa-hourglass-end';
+        }
+    },1000);
+}
+
+new Chart(resultsChart,{
+    type:'bar',
+    data:{
+        labels:['Traditional','CropCare'],
+        datasets:[{data:[70,92],backgroundColor:['#1e293b','#3b82f6'],borderRadius:15}]
+    },
+    options:{
+        plugins:{legend:{display:false}},
+        scales:{y:{beginAtZero:true}}
+    }
+});
+</script>
+
+</body>
+</html>
