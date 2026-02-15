@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PBL Presentation | CropCare</title>
+
+    <!-- Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Fonts & Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        body {
+            background-color: #020617;
+            color: #f8fafc;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .glass {
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* TIMER */
+        #timerContainer {
+            background: #ffffff;
+            color: #020617;
+            border: 3px solid #3b82f6;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            z-index: 1000;
+        }
+        @keyframes flicker {
+            0%,100% { background:#fff; }
+            50% { background:#fecaca; }
+        }
+        .timer-warning {
+            animation: flicker 1s infinite;
+            border-color:#ef4444!important;
+        }
+        .timer-stop {
+            background:#991b1b!important;
+            color:#fff!important;
+            border-color:#f87171!important;
+        }
+    </style>
+</head>
+
+<body onload="startTimer()">
+
+<!-- TIMER -->
+<div id="timerContainer" class="fixed bottom-8 right-8 px-8 py-4 rounded-3xl flex items-center gap-4 transition-all">
+    <i id="timerIcon" class="fas fa-hourglass-start text-blue-600 text-2xl"></i>
+    <span id="displayTime" class="text-4xl font-black font-mono">00:00</span>
+</div>
+
+<!-- NAVBAR -->
+<nav class="fixed w-full z-50 glass border-b border-slate-800/50 px-8 py-4 flex justify-between items-center">
+    <span class="font-black tracking-tight uppercase text-lg">
+        PBL <span class="text-blue-500 italic">2026</span>
+    </span>
+    <div class="hidden md:flex gap-8 text-xs uppercase tracking-widest font-bold opacity-70">
+        <a href="#problem" class="hover:text-blue-400">Problem</a>
+        <a href="#methodology" class="hover:text-blue-400">Methodology</a>
+        <a href="#results" class="hover:text-blue-400">Results</a>
+        <a href="#team" class="hover:text-blue-400">Credits</a>
+    </div>
+</nav>
+
+<!-- CONTENT -->
+<main class="max-w-6xl mx-auto px-6 pt-44 pb-32 space-y-32">
+
+<!-- HERO -->
+<section class="text-center">
+    <div class="inline-block px-4 py-1 border border-slate-800 rounded-full text-slate-400 text-[10px] font-mono mb-6 uppercase">
+        ID: 23FE10CSE00111
+    </div>
+    <h1 class="text-6xl md:text-7xl font-extrabold mb-8 uppercase leading-tight">
+        <span class="gradient-text">CropCare</span>
+    </h1>
+    <p class="text-slate-400 max-w-2xl mx-auto italic text-lg leading-relaxed border-l-2 border-blue-500/30 pl-6 text-left">
+        "An AI-powered web-based system for early crop disease detection using deep learning and structured agricultural knowledge."
+    </p>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem" class="grid md:grid-cols-2 gap-12">
+    <div class="glass p-10 rounded-[2.5rem] border-l-4 border-blue-600">
+        <h2 class="text-3xl font-extrabold mb-6">Problem Statement</h2>
+        <p class="text-slate-400 leading-relaxed text-justify">
+            Crop diseases significantly impact agricultural productivity, particularly in rural regions where expert diagnosis is unavailable.
+            Manual disease identification is slow, error-prone, and often results in delayed treatment and crop loss.
+        </p>
+    </div>
+    <div class="space-y-6">
+        <div class="glass p-7 rounded-3xl border-r-4 border-blue-500/50">
+            <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2">Literature Review</h3>
+            <p class="text-sm text-slate-500 italic">
+                Existing solutions rely on expert inspection or computationally heavy CNN models such as VGG and ResNet, limiting real-time usability.
+            </p>
+        </div>
+        <div class="glass p-7 rounded-3xl border-r-4 border-purple-500/50">
+            <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-2">Research Gap</h3>
+            <p class="text-sm text-slate-500 italic">
+                CropCare addresses this gap by using MobileNetV2 for efficient disease classification combined with a centralized information system.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section id="methodology" class="space-y-12">
+    <h2 class="text-4xl font-black text-center uppercase">System <span class="text-blue-500">Methodology</span></h2>
+    <div class="grid md:grid-cols-3 gap-8">
+        <div class="glass p-8 rounded-3xl text-center">
+            <i class="fas fa-database text-blue-500 text-3xl mb-4"></i>
+            <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Dataset</h3>
+            <p class="text-sm text-slate-500">
+                PlantVillage dataset containing labeled images of healthy and diseased crop leaves, preprocessed and augmented.
+            </p>
+        </div>
+        <div class="glass p-8 rounded-3xl text-center">
+            <i class="fas fa-microchip text-purple-500 text-3xl mb-4"></i>
+            <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Model</h3>
+            <p class="text-sm text-slate-500">
+                MobileNetV1-based CNN trained for multi-class crop disease classification with confidence scoring.
+            </p>
+        </div>
+        <div class="glass p-8 rounded-3xl text-center border-2 border-green-500/20 bg-green-500/5">
+            <i class="fab fa-github text-green-500 text-3xl mb-4"></i>
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-green-400">Source Code</h3>
+            <a href="https://github.com/vrishaan-taneja-2025/Cropcare_project" target="_blank"
+               class="px-6 py-2 bg-green-600 rounded-full text-[10px] font-black hover:bg-green-500 transition">
+                VIEW GITHUB
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results" class="glass p-12 rounded-[3.5rem] border-t-4 border-blue-500">
+    <h2 class="text-3xl font-black mb-12 text-center uppercase">Results & <span class="text-blue-500">Analysis</span></h2>
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="h-80">
+            <canvas id="resultsChart"></canvas>
+        </div>
+        <div class="space-y-6">
+            <div class="p-6 rounded-2xl bg-white/5 flex justify-between items-center border border-white/10">
+                <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Model Accuracy</span>
+                <span class="text-blue-400 font-mono font-black text-3xl">92.4%</span>
+            </div>
+            <p class="text-slate-500 text-sm italic text-justify">
+                The system achieved high classification accuracy on validation data with reliable predictions and seamless frontend-backend integration.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="text-center pt-10 border-t border-slate-900">
+    <h2 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-12">Academic Credits</h2>
+    <div class="flex flex-wrap justify-center gap-10">
+        <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-blue-600">
+            <p class="text-[9px] font-bold text-blue-500 mb-2 uppercase tracking-widest">Project Guide</p>
+            <p class="font-black text-xl">Dr. Prashant Vats</p>
+        </div>
+        <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-slate-700">
+            <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Student</p>
+            <p class="font-black text-xl">Vrishaan Taneja</p>
+            <p class="text-[10px] text-slate-500 mt-1">23FE10CSE00111</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="py-12 text-center bg-black/40 border-t border-slate-900">
+    <p class="text-slate-600 text-[10px] font-bold tracking-[0.3em] uppercase">Manipal University Jaipur</p>
+</footer>
+
+<!-- JS -->
+<script>
+let sec = 0;
+function startTimer() {
+    setInterval(() => {
+        sec++;
+        let m = Math.floor(sec/60), s = sec%60;
+        displayTime.innerText = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+
+        if(sec>=480 && sec<600){
+            timerContainer.classList.add('timer-warning');
+            timerIcon.className='fas fa-hourglass-half';
+        }
+        if(sec
